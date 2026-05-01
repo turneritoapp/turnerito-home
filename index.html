@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnerito - Tu app de agendas</title>
+
+    <!-- SEO básico -->
+    <meta name="description" content="Turnerito: la app de gestión de turnos y reservas para peluqueros, estéticas, barberos, médicos y más. Simple, fácil y sin complicaciones.">
+    <meta name="keywords" content="turnero, agenda, reservas, turnos online, peluquería, estética, barbería">
+    <meta property="og:title" content="Turnerito - Tu app de agendas">
+    <meta property="og:description" content="Gestioná tu agenda de turnos y reservas de manera simple, fácil y sin complicaciones.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://turnerito.com">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/isologotipo_circular.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="img/isologotipo_circular.ico">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* ============================
+           VARIABLES & RESET
+        ============================ */
+        :root {
+            --turnerito-rich-black: #0D0D0D;
+            --turnerito-bangladesh-green: #1a3a1b;
+            --turnerito-mountain-meadow: #244C25;
+            --turnerito-caribbean-green: #D8E5D2;
+            --turnerito-anti-flash-white: #F0F2F5;
+            --turnerito-pine: #061816;
+            --turnerito-basil: #164B43;
+            --bs-body-font-family: "Inter", sans-serif;
+            --bs-primary: #244C25;
+            --bs-primary-rgb: 36, 76, 37;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* ============================
+           BOOTSTRAP OVERRIDES
+        ============================ */
+        .btn-primary,
+        .btn-primary:focus,
+        .btn-primary:active {
+            background-color: var(--turnerito-mountain-meadow) !important;
+            border-color: var(--turnerito-mountain-meadow) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(36, 76, 37, 0.3) !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--turnerito-bangladesh-green) !important;
+            border-color: var(--turnerito-bangladesh-green) !important;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(26, 58, 27, 0.4) !important;
+        }
+
+        .text-primary { color: var(--turnerito-mountain-meadow) !important; }
+        .bg-primary { background-color: var(--turnerito-mountain-meadow) !important; }
+        .bg-light { background-color: var(--turnerito-anti-flash-white) !important; }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.15) !important;
+        }
+
+        /* ============================
+           NAVBAR
+        ============================ */
+        .navbar {
+            background-color: var(--turnerito-mountain-meadow) !important;
+        }
+
+        .navbar-brand img {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* ============================
+           HERO
+        ============================ */
+        .hero-section {
+            background: linear-gradient(135deg,
+                var(--turnerito-anti-flash-white) 0%,
+                rgba(216, 229, 210, 0.15) 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23244C25" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%23D8E5D2" opacity="0.03"/><circle cx="50" cy="10" r="1" fill="%231a3a1b" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            pointer-events: none;
+        }
+
+        .min-vh-90 { min-height: 90vh; }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--turnerito-rich-black);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #666;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn-hero {
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.35) !important;
+        }
+
+        .btn-whatsapp-hero {
+            background-color: #25d366;
+            color: white;
+            border: none;
+        }
+
+        .btn-whatsapp-hero:hover {
+            background-color: #1ebe5d;
+            color: white;
+        }
+
+        .hero-note {
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .hero-image-container {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 1.2s both;
+        }
+
+        .hero-image {
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease-in-out;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .hero-image:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        /* Burbujas flotantes */
+        .floating-features {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+
+        .feature-bubble {
+            position: absolute;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(36, 76, 37, 0.2);
+            animation: float 6s ease-in-out infinite;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        .bubble-1 { top: -5%; left: 2%; animation-delay: 0s; }
+        .bubble-2 { top: 10%; right: -8%; animation-delay: 1.5s; }
+        .bubble-3 { bottom: 15%; left: 5%; animation-delay: 3s; }
+        .bubble-4 { bottom: -5%; right: 10%; animation-delay: 4.5s; }
+
+        .text-mini {
+            font-size: 0.9rem;
+            color: var(--turnerito-rich-black);
+        }
+
+        /* ============================
+           SECCIÓN BADGES
+        ============================ */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--turnerito-rich-black);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.5;
+        }
+
+        /* ============================
+           BENEFIT CARDS
+        ============================ */
+        .benefit-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(36, 76, 37, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--turnerito-mountain-meadow);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--turnerito-mountain-meadow), var(--turnerito-caribbean-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .benefit-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--turnerito-rich-black);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Previews visuales dentro de benefit cards */
+        .mini-calendar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            max-width: 120px;
+        }
+
+        .calendar-day {
+            width: 25px;
+            height: 25px;
+            border-radius: 6px;
+            background: #f0f2f5;
+        }
+
+        .calendar-day.active { background: var(--turnerito-mountain-meadow); }
+        .calendar-day.booked { background: var(--turnerito-caribbean-green); }
+
+        .payment-preview { max-width: 180px; }
+
+        .payment-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .payment-brand { font-size: 0.8rem; color: #666; }
+        .payment-status { font-size: 0.8rem; color: #00d72f; font-weight: 600; }
+
+        .whatsapp-preview { max-width: 200px; }
+
+        .whatsapp-message {
+            background: #dcf8c6;
+            border-radius: 12px 12px 2px 12px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-text { font-size: 0.85rem; color: #333; }
+        .message-time { font-size: 0.7rem; color: #666; margin-left: 10px; }
+
+        /* ============================
+           PROFESSION CARDS
+        ============================ */
+        .profession-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            text-align: center;
+            border: 1px solid rgba(36, 76, 37, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .profession-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--turnerito-mountain-meadow);
+        }
+
+        .profession-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* ============================
+           HOW IT WORKS
+        ============================ */
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(36, 76, 37, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--turnerito-mountain-meadow), var(--turnerito-caribbean-green));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--turnerito-mountain-meadow);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--turnerito-rich-black);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .setup-preview {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .setup-item {
+            background: var(--turnerito-mountain-meadow);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .link-preview {
+            background: #f8f9fa;
+            border: 1px dashed var(--turnerito-mountain-meadow);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .link-text {
+            font-size: 0.85rem;
+            color: var(--turnerito-bangladesh-green);
+            font-family: monospace;
+            flex: 1;
+        }
+
+        .copy-btn { background: none; border: none; cursor: pointer; }
+
+        .notification-preview {
+            background: #25d366;
+            color: white;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            max-width: 180px;
+            margin: 0 auto;
+        }
+
+        /* ============================
+           SCREENSHOTS SECTION
+        ============================ */
+        .screenshots-section .nav-pills .nav-link {
+            color: var(--turnerito-bangladesh-green);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 0 5px;
+        }
+
+        .screenshots-section .nav-pills .nav-link.active {
+            background-color: var(--turnerito-mountain-meadow) !important;
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(36, 76, 37, 0.3);
+        }
+
+        .screenshots-section .nav-pills .nav-link:hover:not(.active) {
+            background-color: rgba(36, 76, 37, 0.08);
+            border-color: var(--turnerito-mountain-meadow);
+        }
+
+        .tab-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* ============================
+           MANAGEMENT SECTION
+        ============================ */
+        .management-image {
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .management-image-container { position: relative; }
+
+        .feature-badges {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-badge {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(36, 76, 37, 0.2);
+        }
+
+        .feature-list { margin-top: 2rem; }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(36, 76, 37, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(36, 76, 37, 0.08);
+            transform: translateX(5px);
+        }
+
+        .feature-item.coming-soon { opacity: 0.7; }
+
+        .feature-check {
+            background: var(--turnerito-mountain-meadow);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--turnerito-rich-black);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-content p {
+            color: #666;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .badge-soon {
+            background: var(--turnerito-mountain-meadow);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+
+        /* ============================
+           PRICING SECTION
+        ============================ */
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(36, 76, 37, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--turnerito-mountain-meadow);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--turnerito-mountain-meadow);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--turnerito-rich-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-subtitle {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--turnerito-mountain-meadow);
+        }
+
+        .price-period { color: #666; font-size: 1rem; }
+
+        .pricing-features { margin-bottom: 2rem; }
+
+        .pricing-features .feature {
+            padding: 0.5rem 0;
+            color: #333;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .pricing-features .feature:last-child { border-bottom: none; }
+
+        .pricing-features .feature-disabled {
+            padding: 0.5rem 0;
+            color: #999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0.6;
+        }
+
+        .pricing-features .feature-disabled:last-child { border-bottom: none; }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pricing-btn.btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .pricing-btn.btn-whatsapp:hover {
+            background-color: #1ebe5d;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* ============================
+           FINAL CTA
+        ============================ */
+        .final-cta {
+            background: linear-gradient(135deg, var(--turnerito-mountain-meadow), var(--turnerito-bangladesh-green));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.1"/></svg>') repeat;
+            pointer-events: none;
+        }
+
+        .cta-content { position: relative; z-index: 2; }
+
+        .cta-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--turnerito-mountain-meadow);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            color: var(--turnerito-bangladesh-green);
+        }
+
+        .btn-cta-whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .btn-cta-whatsapp:hover {
+            background-color: #1ebe5d;
+            color: white;
+        }
+
+        .cta-note {
+            margin-top: 1.5rem;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* ============================
+           WHATSAPP FLOAT
+        ============================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #fff;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #1ebe5d;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* ============================
+           ANIMACIONES
+        ============================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+
+        /* ============================
+           RESPONSIVE
+        ============================ */
+        @media (max-width: 768px) {
+            .navbar-brand img { height: 35px !important; }
+
+            .hero-section {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                min-height: auto !important;
+            }
+
+            .hero-title { font-size: 2.3rem !important; line-height: 1.2 !important; }
+            .hero-subtitle { font-size: 1.1rem !important; }
+
+            .btn-hero {
+                font-size: 1rem !important;
+                padding: 12px 24px !important;
+                display: inline-flex !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .floating-features {
+                position: relative !important;
+                display: flex !important;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+                margin-top: 30px;
+                height: auto !important;
+            }
+
+            .feature-bubble {
+                position: relative !important;
+                top: auto !important; left: auto !important;
+                right: auto !important; bottom: auto !important;
+                width: calc(50% - 10px) !important;
+                animation: none !important;
+                padding: 10px !important;
+                transform: none !important;
+            }
+
+            .hero-image { margin-top: 20px; }
+
+            .screenshots-section .nav-pills {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                justify-content: flex-start !important;
+                padding-bottom: 15px;
+            }
+
+            .screenshots-section .nav-link {
+                white-space: nowrap;
+                font-size: 0.85rem;
+                margin-right: 8px !important;
+            }
+
+            .section-title { font-size: 1.8rem !important; }
+
+            .cta-title { font-size: 1.8rem !important; }
+
+            .btn-cta {
+                width: 100%;
+                font-size: 1rem !important;
+                padding: 1rem !important;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .feature-badges { display: none; }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.5rem;
+            }
+
+            .pricing-card.featured { transform: scale(1); }
+
+            .py-5 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ============================
+     NAV
+============================ -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+    <div class="container py-1">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/isologotipo_completo_circular_positivo.png.png" alt="Turnerito">
+        </a>
+        <div class="ms-auto d-flex align-items-center">
+            <a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Turnerito%20%F0%9F%93%85"
+               class="btn fw-bold"
+               style="background-color: #25d366; color: white; border-color: #25d366;"
+               target="_blank">
+                <i class="bi bi-whatsapp me-2"></i> Contactanos
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================
+     HERO
+============================ -->
+<main class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-90">
+            <div class="col-lg-5 text-center text-lg-start">
+                <h1 class="hero-title mb-4">
+                    Tu app de <span class="text-primary">agendas</span>
+                </h1>
+
+                <p class="hero-subtitle mb-5">
+                    Gestioná tu agenda de turnos y reservas de manera simple, fácil y sin complicaciones.
+                </p>
+
+                <div class="hero-cta mb-4">
+                    <a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Turnerito%20%F0%9F%93%85"
+                       class="btn btn-hero btn-whatsapp-hero shadow-lg"
+                       target="_blank">
+                        <i class="bi bi-whatsapp me-2"></i>
+                        Consultanos por WhatsApp
+                    </a>
+                </div>
+
+                <p class="hero-note text-muted">
+                    <i class="bi bi-shield-check me-2"></i>
+                    Y automatizá tu agenda de turnos
+                </p>
+            </div>
+
+            <div class="col-lg-7 text-center mt-5 mt-lg-0">
+                <div class="hero-image-container">
+                    <img src="img/sistema-ejemplo2.png" class="img-fluid hero-image" alt="Vista previa del panel de admin">
+
+                    <div class="floating-features">
+                        <div class="feature-bubble bubble-1">
+                            <div class="d-flex align-items-center">
+                                <div class="fs-4 me-2">💬</div>
+                                <div class="text-mini fw-bold">Alertas WhatsApp</div>
+                            </div>
+                        </div>
+                        <div class="feature-bubble bubble-2">
+                            <div class="d-flex align-items-center">
+                                <div class="fs-4 me-2">💳</div>
+                                <div class="text-mini fw-bold">Cobros Online</div>
+                            </div>
+                        </div>
+                        <div class="feature-bubble bubble-3">
+                            <div class="d-flex align-items-center">
+                                <div class="fs-4 me-2">📆</div>
+                                <div class="text-mini fw-bold">Agenda 24/7</div>
+                            </div>
+                        </div>
+                        <div class="feature-bubble bubble-4">
+                            <div class="d-flex align-items-center">
+                                <div class="fs-4 me-2">👥</div>
+                                <div class="text-mini fw-bold">Multiperfil</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ============================
+     BENEFICIOS
+============================ -->
+<section class="benefits-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="section-badge mb-3">
+                <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                    ✨ Beneficios
+                </span>
+            </div>
+            <h2 class="section-title">Por qué elegir Turnerito</h2>
+            <p class="section-subtitle">
+                Somos una plataforma de gestión de reservas intuitiva y fácil de usar.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Benefit 1 -->
+            <div class="col-lg-4">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="bi bi-calendar-check-fill"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Simpleza y automatización</h3>
+                        <p class="benefit-description">
+                            Turnerito simplifica y automatiza las tareas repetitivas del agendamiento de tus reservas, permitiendo que puedas enfocarte en sólo hacer tu trabajo.
+                        </p>
+                    </div>
+                    <div class="benefit-visual">
+                        <div class="feature-preview">
+                            <div class="mini-calendar">
+                                <div class="calendar-day active"></div>
+                                <div class="calendar-day"></div>
+                                <div class="calendar-day booked"></div>
+                                <div class="calendar-day"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="col-lg-4">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="bi bi-credit-card-fill"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Reducción de inasistencias</h3>
+                        <p class="benefit-description">
+                            Cobrás por anticipado y les recordamos automáticamente de sus citas a tus clientes.
+                        </p>
+                    </div>
+                    <div class="benefit-visual">
+                        <div class="payment-preview">
+                            <div class="payment-card">
+                                <span class="payment-brand">💳 MercadoPago</span>
+                                <span class="payment-status">✓ Pagado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="col-lg-4">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Notificaciones WhatsApp</h3>
+                        <p class="benefit-description">
+                            Recordatorios automáticos, confirmaciones de reserva y avisos de cancelación directo al WhatsApp de tus clientes.
+                        </p>
+                    </div>
+                    <div class="benefit-visual">
+                        <div class="whatsapp-preview">
+                            <div class="whatsapp-message">
+                                <span class="message-text">✅ Turno confirmado</span>
+                                <span class="message-time">12:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     PARA QUIEN
+============================ -->
+<section class="for-who-section py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="section-badge mb-3">
+                <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                    👥 Para quien
+                </span>
+            </div>
+            <h2 class="section-title">Turnerito se adapta a tu rubro</h2>
+            <p class="section-subtitle">
+                Ya sea que tengas una empresa, negocio, emprendimiento o seas profesional, Turnerito es para vos.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="profession-card">
+                    <div class="profession-icon">💇‍♀️</div>
+                    <h3 class="h4 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Peluqueros</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="profession-card">
+                    <div class="profession-icon">💆‍♀️</div>
+                    <h3 class="h4 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Estéticas</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="profession-card">
+                    <div class="profession-icon">✂️</div>
+                    <h3 class="h4 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Barberos</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="profession-card">
+                    <div class="profession-icon">👨‍⚕️</div>
+                    <h3 class="h4 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Médicos</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     CÓMO FUNCIONA
+============================ -->
+<section class="how-it-works py-5 bg-light border-top border-bottom">
+    <div class="container text-center">
+        <div class="section-badge mb-3">
+            <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                ⚡ COMO FUNCIONA
+            </span>
+        </div>
+        <h2 class="section-title mb-4">¿Cómo funciona Turnerito?</h2>
+        <p class="section-subtitle mb-5">Tan simple que no necesitás explicarlo. En tres pasos tu agenda queda digitalizada.</p>
+
+        <div class="row g-5">
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="bi bi-person-badge-fill"></i>
+                    </div>
+                    <h3 class="step-title h4">Registrá tu negocio</h3>
+                    <p class="step-description">
+                        Creá tu cuenta y configurá tus servicios, especialistas y horarios de atención. Todo desde un panel fácil de usar.
+                    </p>
+                    <div class="step-visual">
+                        <div class="setup-preview">
+                            <div class="setup-item">📊 Panel</div>
+                            <div class="setup-item">⏰ Horarios</div>
+                            <div class="setup-item">👥 Especialistas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+                    <h3 class="step-title h4">Compartí tu link</h3>
+                    <p class="step-description">
+                        Recibís una URL única para tu negocio. Compartila en Instagram, WhatsApp o tu web y empezá a recibir turnos 24/7.
+                    </p>
+                    <div class="step-visual">
+                        <div class="link-preview">
+                            <span class="link-text">turnerito.com/mi-negocio</span>
+                            <button class="copy-btn">📋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                    <h3 class="step-title h4">Recibí notificaciones</h3>
+                    <p class="step-description">
+                        Turnerito avisa por WhatsApp cada nueva reserva, cancelación o recordatorio. Tus clientes felices, y vos con tu agenda bajo control.
+                    </p>
+                    <div class="step-visual">
+                        <div class="notification-preview">
+                            🔔 Nuevo turno reservado
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     CAPTURAS
+============================ -->
+<section class="screenshots-section py-5 bg-white border-top">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="section-badge mb-3">
+                <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                    📸 VISTA PREVIA
+                </span>
+            </div>
+            <h2 class="section-title">Echá un vistazo por dentro</h2>
+            <p class="section-subtitle">Descubrí la interfaz intuitiva que hará que ames gestionar tu agenda.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active fw-bold px-4" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab">Login</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-bold px-4" id="pills-dash-tab" data-bs-toggle="pill" data-bs-target="#pills-dash" type="button" role="tab">Dashboard</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-bold px-4" id="pills-cal-tab" data-bs-toggle="pill" data-bs-target="#pills-cal" type="button" role="tab">Calendario</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-bold px-4" id="pills-reserva-tab" data-bs-toggle="pill" data-bs-target="#pills-reserva" type="button" role="tab">Vista Cliente</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content bg-light p-2 rounded-4 shadow-lg" id="pills-tabContent" style="border: 1px solid rgba(36, 76, 37, 0.2);">
+                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" tabindex="0">
+                        <img src="img/capturas/login-1.png" class="img-fluid rounded-3" alt="Login Turnerito">
+                    </div>
+                    <div class="tab-pane fade" id="pills-dash" role="tabpanel" tabindex="0">
+                        <img src="img/capturas/dashboard-1.png" class="img-fluid rounded-3" alt="Dashboard Turnerito">
+                    </div>
+                    <div class="tab-pane fade" id="pills-cal" role="tabpanel" tabindex="0">
+                        <img src="img/capturas/calendario-1.png" class="img-fluid rounded-3" alt="Calendario de Turnos">
+                    </div>
+                    <div class="tab-pane fade" id="pills-reserva" role="tabpanel" tabindex="0">
+                        <img src="img/capturas/clientes-1.png" class="img-fluid rounded-3" alt="Interfaz de reserva para clientes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     PANEL DE GESTION
+============================ -->
+<section class="management-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+                <div class="management-image-container">
+                    <img src="img/sistema-ejemplo2.png" class="img-fluid management-image" alt="Panel de administración Turnerito">
+                    <div class="feature-badges">
+                        <span class="feature-badge">📅 Calendario</span>
+                        <span class="feature-badge">📊 Reportes</span>
+                        <span class="feature-badge">💬 WhatsApp</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section-badge mb-3">
+                    <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                        🎛️ GESTIÓN COMPLETA
+                    </span>
+                </div>
+                <h2 class="section-title mb-3">Todo lo que necesitás en un solo lugar</h2>
+                <p class="section-subtitle mb-4">
+                    Accedé a tu panel de administración para gestionar cada detalle: turnos, servicios, especialistas, horarios y clientes frecuentes.
+                </p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <div class="feature-content">
+                            <h5>Calendario interactivo y tabla de turnos</h5>
+                            <p>Vista mensual, semanal y diaria con todos tus turnos organizados</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <div class="feature-content">
+                            <h5>Bloqueos y disponibilidad por especialista</h5>
+                            <p>Configurá horarios, descansos y días no laborables fácilmente</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <div class="feature-content">
+                            <h5>Notificaciones automáticas por WhatsApp</h5>
+                            <p>Recordatorios y confirmaciones sin que tengas que hacer nada</p>
+                        </div>
+                    </div>
+                    <div class="feature-item coming-soon">
+                        <div class="feature-check">🚀</div>
+                        <div class="feature-content">
+                            <h5>Estadísticas y reportes <span class="badge-soon">PRÓXIMAMENTE</span></h5>
+                            <p>Métricas de tu negocio para tomar mejores decisiones</p>
+                        </div>
+                    </div>
+                    <div class="feature-item coming-soon">
+                        <div class="feature-check">🚀</div>
+                        <div class="feature-content">
+                            <h5>Pagos online con MercadoPago <span class="badge-soon">PRÓXIMAMENTE</span></h5>
+                            <p>Cobrá señas y turnos completos al momento de la reserva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     PLANES
+============================ -->
+<section class="pricing-section py-5 bg-light border-top">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="section-badge mb-3">
+                <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                    💰 PRECIOS
+                </span>
+            </div>
+            <h2 class="section-title mb-4">Planes para cada tipo de negocio</h2>
+            <p class="section-subtitle mb-5">Elegí el plan que mejor se adapte a vos. Podés empezar gratis y escalar cuando tu negocio crezca.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Plan Free -->
+            <div class="col-lg-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Gratuito</h3>
+                        <div class="pricing-subtitle">Para que inicies sin costos</div>
+                        <div class="pricing-price">
+                            <span class="price-amount">$0</span>
+                            <span class="price-period">/mes</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">✓ Hasta 100 turnos mensuales</div>
+                        <div class="feature">✓ 1 especialista</div>
+                        <div class="feature">✓ 3 servicios máximo</div>
+                        <div class="feature">✓ Panel básico</div>
+                        <div class="feature">✓ Soporte por correo</div>
+                        <div class="feature-disabled">✗ Sin notificaciones WhatsApp</div>
+                        <div class="feature-disabled">✗ Sin reportes</div>
+                    </div>
+                    <a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20comenzar%20con%20Turnerito%20%F0%9F%93%85"
+                       class="pricing-btn btn-whatsapp"
+                       target="_blank">
+                        <i class="bi bi-whatsapp"></i> Comenzar gratis
+                    </a>
+                </div>
+            </div>
+
+            <!-- Plan Advance - DESTACADO -->
+            <div class="col-lg-4">
+                <div class="pricing-card featured">
+                    <div class="popular-badge">🔥 MÁS POPULAR</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Advance</h3>
+                        <div class="pricing-subtitle">Para que puedas crecer</div>
+                        <div class="pricing-price">
+                            <span class="price-amount">Consultar</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">✓ Hasta 200 turnos mensuales</div>
+                        <div class="feature">✓ Hasta 5 especialistas</div>
+                        <div class="feature">✓ Servicios ilimitados</div>
+                        <div class="feature">✓ Notificaciones WhatsApp</div>
+                        <div class="feature">✓ Reportes básicos</div>
+                        <div class="feature">✓ Soporte preferencial</div>
+                    </div>
+                    <a href="https://wa.me/5493515303017?text=Hola!%20Me%20interesa%20el%20plan%20Advance%20de%20Turnerito%20%F0%9F%93%85"
+                       class="pricing-btn btn-whatsapp"
+                       target="_blank">
+                        <i class="bi bi-whatsapp"></i> Consultar precio
+                    </a>
+                </div>
+            </div>
+
+            <!-- Plan Business -->
+            <div class="col-lg-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Business</h3>
+                        <div class="pricing-subtitle">Para negocios grandes</div>
+                        <div class="pricing-price">
+                            <span class="price-amount">Consultar</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">✓ Turnos ilimitados</div>
+                        <div class="feature">✓ Especialistas ilimitados</div>
+                        <div class="feature">✓ Servicios ilimitados</div>
+                        <div class="feature">✓ Notificaciones WhatsApp avanzadas</div>
+                        <div class="feature">✓ Reportes y estadísticas avanzadas</div>
+                        <div class="feature">✓ Múltiples sucursales</div>
+                        <div class="feature">✓ Soporte 24/7</div>
+                    </div>
+                    <a href="https://wa.me/5493515303017?text=Hola!%20Me%20interesa%20el%20plan%20Business%20de%20Turnerito%20%F0%9F%93%85"
+                       class="pricing-btn btn-whatsapp"
+                       target="_blank">
+                        <i class="bi bi-whatsapp"></i> Consultar precio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     CTA FINAL
+============================ -->
+<section class="final-cta py-5">
+    <div class="container text-center">
+        <div class="cta-content">
+            <h2 class="cta-title">¿Listo para digitalizar tu negocio?</h2>
+            <p class="cta-subtitle">
+                Dejá atrás la agenda de papel y empezá a recibir turnos las 24 horas.
+                <br>Con Turnerito, tus clientes reservan y vos te concentrás en lo importante.
+            </p>
+
+            <a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20digitalizar%20mi%20negocio%20con%20Turnerito%20%F0%9F%93%85"
+               class="btn btn-cta btn-cta-whatsapp shadow-lg"
+               target="_blank">
+                <i class="bi bi-whatsapp me-2"></i>
+                Hablemos por WhatsApp
+            </a>
+
+            <p class="cta-note">
+                <i class="bi bi-shield-check me-2"></i>
+                Sin complicaciones &bull; Setup gratuito &bull; Soporte incluido
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     BOTÓN FLOTANTE WHATSAPP
+============================ -->
+<a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Turnerito%20%F0%9F%93%85"
+   class="whatsapp-float"
+   target="_blank"
+   title="Chateá con nosotros por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- ============================
+     FOOTER
+============================ -->
+<footer class="container mt-4 text-center text-muted pb-4">
+    <p>&copy; 2026 - Turnerito</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script>
+    // Tooltips Bootstrap
+    document.addEventListener('DOMContentLoaded', function () {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (el) { return new bootstrap.Tooltip(el); });
+    });
+</script>
+
+</body>
+</html>
