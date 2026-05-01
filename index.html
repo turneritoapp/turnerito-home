@@ -12,7 +12,7 @@
     <meta property="og:title" content="Turnerito - Tu app de agendas">
     <meta property="og:description" content="Gestioná tu agenda de turnos y reservas de manera simple, fácil y sin complicaciones.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://turnerito.com">
+    <meta property="og:url" content="https://turneritoapp.com">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/isologotipo_circular.ico">
@@ -147,14 +147,16 @@
         }
 
         .btn-whatsapp-hero {
-            background-color: #25d366;
+            background-color: var(--turnerito-mountain-meadow);
             color: white;
-            border: none;
+            border: 2px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 15px rgba(36, 76, 37, 0.35) !important;
         }
 
         .btn-whatsapp-hero:hover {
-            background-color: #1ebe5d;
+            background-color: var(--turnerito-bangladesh-green);
             color: white;
+            border-color: rgba(255,255,255,0.35);
         }
 
         .hero-note {
@@ -667,14 +669,17 @@
         }
 
         .pricing-btn.btn-whatsapp {
-            background-color: #25d366;
+            background-color: var(--turnerito-mountain-meadow);
             color: white;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(36, 76, 37, 0.3);
         }
 
         .pricing-btn.btn-whatsapp:hover {
-            background-color: #1ebe5d;
+            background-color: var(--turnerito-bangladesh-green);
             transform: translateY(-2px);
             color: white;
+            box-shadow: 0 6px 20px rgba(26, 58, 27, 0.4);
         }
 
         /* ============================
@@ -732,13 +737,15 @@
         }
 
         .btn-cta-whatsapp {
-            background-color: #25d366;
-            color: white;
+            background-color: white;
+            color: var(--turnerito-mountain-meadow);
+            border: 2px solid white;
         }
 
         .btn-cta-whatsapp:hover {
-            background-color: #1ebe5d;
-            color: white;
+            background-color: var(--turnerito-caribbean-green);
+            color: var(--turnerito-bangladesh-green);
+            border-color: var(--turnerito-caribbean-green);
         }
 
         .cta-note {
@@ -754,7 +761,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25d366;
+            background-color: var(--turnerito-mountain-meadow);
             color: #fff;
             font-size: 2rem;
             width: 60px;
@@ -763,14 +770,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(36, 76, 37, 0.45);
             z-index: 1000;
             transition: all 0.3s ease;
             text-decoration: none;
         }
 
         .whatsapp-float:hover {
-            background-color: #1ebe5d;
+            background-color: var(--turnerito-bangladesh-green);
             transform: scale(1.1);
             color: white;
         }
@@ -891,7 +898,7 @@
         <div class="ms-auto d-flex align-items-center">
             <a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Turnerito%20%F0%9F%93%85"
                class="btn fw-bold"
-               style="background-color: #25d366; color: white; border-color: #25d366;"
+               style="background-color: var(--turnerito-mountain-meadow); color: white; border-color: var(--turnerito-mountain-meadow); box-shadow: 0 4px 15px rgba(36,76,37,0.3);"
                target="_blank">
                 <i class="bi bi-whatsapp me-2"></i> Contactanos
             </a>
@@ -1149,7 +1156,7 @@
                     </p>
                     <div class="step-visual">
                         <div class="link-preview">
-                            <span class="link-text">turnerito.com/mi-negocio</span>
+                            <span class="link-text">turneritoapp.com/mi-negocio</span>
                             <button class="copy-btn">📋</button>
                         </div>
                     </div>
