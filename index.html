@@ -36,6 +36,7 @@
             --turnerito-rich-black: #0D0D0D;
             --turnerito-bangladesh-green: #1a3a1b;
             --turnerito-mountain-meadow: #244C25;
+            --turnerito-accent: #3a8a3b;
             --turnerito-caribbean-green: #D8E5D2;
             --turnerito-anti-flash-white: #F0F2F5;
             --turnerito-pine: #061816;
@@ -70,7 +71,7 @@
             box-shadow: 0 6px 20px rgba(26, 58, 27, 0.4) !important;
         }
 
-        .text-primary { color: var(--turnerito-mountain-meadow) !important; }
+        .text-primary { color: var(--turnerito-accent) !important; }
         .bg-primary { background-color: var(--turnerito-mountain-meadow) !important; }
         .bg-light { background-color: var(--turnerito-anti-flash-white) !important; }
 
@@ -351,6 +352,88 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             display: block;
+        }
+
+        /* ============================
+           USE CASE CARDS
+        ============================ */
+        .use-case-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(36, 76, 37, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.11);
+            border-color: var(--turnerito-mountain-meadow);
+        }
+
+        .use-case-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .use-case-emoji {
+            font-size: 2.8rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .use-case-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--turnerito-rich-black);
+            margin: 0 0 0.3rem;
+        }
+
+        .use-case-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(36, 76, 37, 0.08);
+            color: var(--turnerito-mountain-meadow);
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .use-case-desc {
+            color: #555;
+            line-height: 1.65;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        .use-case-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .use-case-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            color: #444;
+        }
+
+        .use-case-list li i {
+            color: var(--turnerito-mountain-meadow);
+            font-size: 0.85rem;
+            flex-shrink: 0;
         }
 
         /* ============================
@@ -720,7 +803,7 @@
         }
 
         .cta-trust-items span i {
-            color: var(--turnerito-mountain-meadow);
+            color: var(--turnerito-accent);
         }
 
         .cta-action-card {
@@ -1149,25 +1232,118 @@
             </div>
             <div class="col-6 col-md-4 col-lg-2">
                 <div class="profession-card">
-                    <div class="profession-icon">🏃‍♂️</div>
-                    <h3 class="h5 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Entrenadores</h3>
-                    <p class="small text-muted mt-1 mb-0">Sesiones organizadas</p>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="profession-card">
                     <div class="profession-icon">🧘‍♀️</div>
                     <h3 class="h5 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Masajistas</h3>
                     <p class="small text-muted mt-1 mb-0">Recordatorios automáticos</p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="profession-card">
-                    <div class="profession-icon">🦷</div>
-                    <h3 class="h5 m-0 fw-semibold" style="color: var(--turnerito-rich-black);">Odontólogos</h3>
-                    <p class="small text-muted mt-1 mb-0">Historial de pacientes</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     CASOS DE USO POR RUBRO
+============================ -->
+<section class="use-cases-section py-5 border-top" style="background: #fff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="section-badge mb-3">
+                <span class="badge text-white px-4 py-2 rounded-pill" style="background-color: #244C25;">
+                    🎯 Casos de uso
+                </span>
+            </div>
+            <h2 class="section-title">Turnerito funciona para vos</h2>
+            <p class="section-subtitle">
+                Cada rubro tiene sus necesidades. Turnerito las cubre.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Peluqueros -->
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card h-100">
+                    <div class="use-case-header">
+                        <span class="use-case-emoji">💇‍♀️</span>
+                        <div>
+                            <h3 class="use-case-title">Peluqueros</h3>
+                            <span class="use-case-tag"><i class="bi bi-instagram me-1"></i>Link en Instagram</span>
+                        </div>
+                    </div>
+                    <p class="use-case-desc">
+                        Poné el link de tu agenda en la bio de Instagram y que los clientes reserven solos. Sin llamadas, sin mensajes de madrugada, sin confusiones de horario.
+                    </p>
+                    <ul class="use-case-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Reservas desde Instagram y WhatsApp</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Confirmaciones automáticas al cliente</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Agenda organizada por profesional</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- Barberos -->
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card h-100">
+                    <div class="use-case-header">
+                        <span class="use-case-emoji">✂️</span>
+                        <div>
+                            <h3 class="use-case-title">Barberos</h3>
+                            <span class="use-case-tag"><i class="bi bi-phone-fill me-1"></i>Turnos sin llamadas</span>
+                        </div>
+                    </div>
+                    <p class="use-case-desc">
+                        Olvidate de atender el teléfono mientras trabajás. Tus clientes eligen su barbero favorito, el servicio y el horario desde el celular, en cualquier momento.
+                    </p>
+                    <ul class="use-case-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Elección de barbero preferido</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Disponibilidad en tiempo real</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Sin interrupciones mientras cortás</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Estéticas -->
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card h-100">
+                    <div class="use-case-header">
+                        <span class="use-case-emoji">💆‍♀️</span>
+                        <div>
+                            <h3 class="use-case-title">Estéticas</h3>
+                            <span class="use-case-tag"><i class="bi bi-clock-fill me-1"></i>Agenda 24/7</span>
+                        </div>
+                    </div>
+                    <p class="use-case-desc">
+                        Tus clientas reservan a cualquier hora, incluso cuando el local está cerrado. Gestioná múltiples profesionales y servicios con distintas duraciones desde un solo panel.
+                    </p>
+                    <ul class="use-case-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Múltiples profesionales y servicios</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Reservas activas fuera del horario</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Vista de agenda centralizada</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Masajistas -->
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card h-100">
+                    <div class="use-case-header">
+                        <span class="use-case-emoji">🧘‍♀️</span>
+                        <div>
+                            <h3 class="use-case-title">Masajistas</h3>
+                            <span class="use-case-tag"><i class="bi bi-bell-fill me-1"></i>Recordatorios automáticos</span>
+                        </div>
+                    </div>
+                    <p class="use-case-desc">
+                        Turnerito avisa a tus clientes por WhatsApp antes de cada sesión. Reducís las ausencias sin tener que recordarle a cada uno manualmente. Tu agenda, siempre llena.
+                    </p>
+                    <ul class="use-case-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Recordatorios automáticos 24 hs antes</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Menos ausencias, más ingresos</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Reservas online sin intermediarios</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
