@@ -172,6 +172,17 @@
             border-color: rgba(255,255,255,0.35);
         }
 
+        .btn-hero-secondary {
+            background-color: transparent;
+            color: var(--turnerito-mountain-meadow);
+            border: 2px solid var(--turnerito-mountain-meadow);
+        }
+
+        .btn-hero-secondary:hover {
+            background-color: var(--turnerito-mountain-meadow);
+            color: white !important;
+        }
+
         .hero-note {
             animation: fadeInUp 0.8s ease-out 1s both;
         }
@@ -779,6 +790,32 @@
             box-shadow: 0 6px 20px rgba(26, 58, 27, 0.4);
         }
 
+        .pricing-btn.btn-outline {
+            background-color: transparent;
+            color: var(--turnerito-mountain-meadow);
+            border: 2px solid var(--turnerito-mountain-meadow);
+        }
+
+        .pricing-btn.btn-outline:hover {
+            background-color: var(--turnerito-mountain-meadow);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .pricing-btn.btn-primary {
+            background-color: var(--turnerito-mountain-meadow) !important;
+            color: white !important;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(36, 76, 37, 0.3);
+        }
+
+        .pricing-btn.btn-primary:hover {
+            background-color: var(--turnerito-bangladesh-green) !important;
+            transform: translateY(-2px);
+            color: white !important;
+            box-shadow: 0 6px 20px rgba(26, 58, 27, 0.4);
+        }
+
         /* ============================
            FINAL CTA
         ============================ */
@@ -1050,9 +1087,8 @@
         <div class="row align-items-center min-vh-90">
             <div class="col-lg-5 text-center text-lg-start">
                 <h1 class="hero-title mb-3">
-                    Tu turnero online para<br class="d-none d-lg-block">
-                    <span class="text-primary">peluquerías, barberos</span><br class="d-none d-lg-block">
-                    y estéticas.
+                    Tu agenda online,<br class="d-none d-lg-block">
+                    <span class="text-primary">siempre activa.</span>
                 </h1>
 
                 <p class="hero-subtitle mb-5">
@@ -1544,7 +1580,7 @@
                     <div class="feature-item coming-soon">
                         <div class="feature-check">🚀</div>
                         <div class="feature-content">
-                            <h5>Pagos online con MercadoPago <span class="badge-soon">PRÓXIMAMENTE</span></h5>
+                            <h5>Pagos online <span class="badge-soon">PRÓXIMAMENTE</span></h5>
                             <p>Cobrá señas y turnos completos al momento de la reserva</p>
                         </div>
                     </div>
@@ -1591,30 +1627,31 @@
                     💰 PRECIOS
                 </span>
             </div>
-            <h2 class="section-title mb-4">Planes para cada tipo de negocio</h2>
-            <p class="section-subtitle mb-5">Elegí el plan que mejor se adapte a vos. Podés empezar gratis y escalar cuando tu negocio crezca.</p>
+            <h2 class="section-title mb-4">Simple. Un solo plan.</h2>
+            <p class="section-subtitle mb-5">Probá gratis 30 días. Si te convence, activás el Plan Pro y seguís creciendo.</p>
         </div>
 
         <div class="row g-4 justify-content-center">
-            <!-- Plan Free -->
+
+            <!-- Trial -->
             <div class="col-lg-4">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3 class="pricing-title">Gratuito</h3>
-                        <div class="pricing-subtitle">Para que inicies sin costos</div>
+                        <h3 class="pricing-title">Trial</h3>
+                        <div class="pricing-subtitle">30 días para probarlo sin compromiso</div>
                         <div class="pricing-price">
                             <span class="price-amount">$0</span>
-                            <span class="price-period">/mes</span>
+                            <span class="price-period">/30 días</span>
                         </div>
                     </div>
                     <div class="pricing-features">
-                        <div class="feature">✓ Hasta 100 turnos mensuales</div>
-                        <div class="feature">✓ 1 especialista</div>
-                        <div class="feature">✓ 3 servicios máximo</div>
-                        <div class="feature">✓ Panel básico</div>
-                        <div class="feature">✓ Soporte por correo</div>
+                        <div class="feature">✓ Hasta 50 turnos durante el trial</div>
+                        <div class="feature">✓ Hasta 2 especialistas</div>
+                        <div class="feature">✓ Hasta 5 servicios</div>
+                        <div class="feature">✓ Panel de administración completo</div>
+                        <div class="feature">✓ Reservas online para tus clientes</div>
                         <div class="feature-disabled">✗ Sin notificaciones WhatsApp</div>
-                        <div class="feature-disabled">✗ Sin reportes</div>
+                        <div class="feature-disabled">✗ Sin reportes avanzados</div>
                     </div>
                     <a href="https://wa.me/5493515303017?text=Hola!%20Quiero%20comenzar%20con%20Turnerito%20%F0%9F%93%85"
                        class="pricing-btn btn-whatsapp"
@@ -1625,58 +1662,31 @@
                 </div>
             </div>
 
-            <!-- Plan Advance - DESTACADO -->
+            <!-- Plan Pro - DESTACADO -->
             <div class="col-lg-4">
                 <div class="pricing-card featured">
-                    <div class="popular-badge">🔥 MÁS POPULAR</div>
+                    <div class="popular-badge">⭐ PLAN ÚNICO</div>
                     <div class="pricing-header">
-                        <h3 class="pricing-title">Advance</h3>
-                        <div class="pricing-subtitle">Para que puedas crecer</div>
+                        <h3 class="pricing-title">Pro</h3>
+                        <div class="pricing-subtitle">Todo lo que necesitás para crecer</div>
                         <div class="pricing-price">
-                            <span class="price-amount">Consultar</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <div class="feature">✓ Hasta 200 turnos mensuales</div>
-                        <div class="feature">✓ Hasta 5 especialistas</div>
-                        <div class="feature">✓ Servicios ilimitados</div>
-                        <div class="feature">✓ Notificaciones WhatsApp</div>
-                        <div class="feature">✓ Reportes básicos</div>
-                        <div class="feature">✓ Soporte preferencial</div>
-                    </div>
-                    <a href="https://wa.me/5493515303017?text=Hola!%20Me%20interesa%20el%20plan%20Advance%20de%20Turnerito%20%F0%9F%93%85"
-                       class="pricing-btn btn-whatsapp"
-                       target="_blank"
-                       onclick="gtag('event', 'click_whatsapp', { event_category: 'CTA', event_label: 'Pricing - Plan Advance' });">
-                        <i class="bi bi-whatsapp"></i> Consultar precio
-                    </a>
-                </div>
-            </div>
-
-            <!-- Plan Business -->
-            <div class="col-lg-4">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Business</h3>
-                        <div class="pricing-subtitle">Para negocios grandes</div>
-                        <div class="pricing-price">
-                            <span class="price-amount">Consultar</span>
+                            <span class="price-amount">$50.000</span>
+                            <span class="price-period">/mes</span>
                         </div>
                     </div>
                     <div class="pricing-features">
                         <div class="feature">✓ Turnos ilimitados</div>
                         <div class="feature">✓ Especialistas ilimitados</div>
                         <div class="feature">✓ Servicios ilimitados</div>
-                        <div class="feature">✓ Notificaciones WhatsApp avanzadas</div>
+                        <div class="feature">✓ Notificaciones WhatsApp</div>
                         <div class="feature">✓ Reportes y estadísticas avanzadas</div>
-                        <div class="feature">✓ Múltiples sucursales</div>
-                        <div class="feature">✓ Soporte 24/7</div>
+                        <div class="feature">✓ Soporte prioritario</div>
                     </div>
-                    <a href="https://wa.me/5493515303017?text=Hola!%20Me%20interesa%20el%20plan%20Business%20de%20Turnerito%20%F0%9F%93%85"
+                    <a href="https://wa.me/5493515303017?text=Hola!%20Me%20interesa%20el%20plan%20Pro%20de%20Turnerito%20%F0%9F%93%85"
                        class="pricing-btn btn-whatsapp"
                        target="_blank"
-                       onclick="gtag('event', 'click_whatsapp', { event_category: 'CTA', event_label: 'Pricing - Plan Business' });">
-                        <i class="bi bi-whatsapp"></i> Consultar precio
+                       onclick="gtag('event', 'click_whatsapp', { event_category: 'CTA', event_label: 'Pricing - Plan Pro' });">
+                        <i class="bi bi-whatsapp"></i> Activar Plan Pro
                     </a>
                 </div>
             </div>
