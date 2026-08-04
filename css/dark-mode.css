@@ -1,0 +1,269 @@
+/* ============================================================
+   TURNERITO APP — DARK MODE
+   Activado con: <html data-bs-theme="dark">
+   ============================================================ */
+
+/* ── 1. Variables CSS ───────────────────────────────────────── */
+[data-bs-theme="dark"] {
+  --turnerito-rich-black:        #f1f5f9;
+  --turnerito-anti-flash-white:  #0f172a;
+  --turnerito-caribbean-green:   #334155;
+  --dm-body-bg:                  #0f172a;
+  --dm-surface:                  #1e293b;
+  --dm-surface-2:                #243447;
+  --dm-border:                   #334155;
+  --dm-text-primary:             #f1f5f9;
+  --dm-text-muted:               #94a3b8;
+  --dm-accent:                   #6ee7b7;
+  --dm-accent-hover:             #86efac;
+}
+
+/* ── 2. Base ────────────────────────────────────────────────── */
+[data-bs-theme="dark"] body {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+[data-bs-theme="dark"] h1,
+[data-bs-theme="dark"] h2,
+[data-bs-theme="dark"] h3,
+[data-bs-theme="dark"] h4,
+[data-bs-theme="dark"] h5,
+[data-bs-theme="dark"] h6 { color: #f1f5f9 !important; }
+
+[data-bs-theme="dark"] p   { color: #94a3b8 !important; }
+[data-bs-theme="dark"] li  { color: #94a3b8 !important; }
+[data-bs-theme="dark"] span { color: inherit; }
+
+[data-bs-theme="dark"] hr {
+  border-color: #334155 !important;
+  opacity: 1;
+}
+
+/* ── 3. Links ───────────────────────────────────────────────── */
+[data-bs-theme="dark"] a:not(.btn):not(.nav-link):not([class*="btn-"]):not(.whatsapp-float):not(.pricing-btn):not(.btn-cta):not(.navbar-brand) {
+  color: #6ee7b7 !important;
+}
+[data-bs-theme="dark"] a:not(.btn):not(.nav-link):not([class*="btn-"]):not(.whatsapp-float):not(.pricing-btn):not(.btn-cta):not(.navbar-brand):hover {
+  color: #86efac !important;
+}
+
+/* ── 4. Navbar ──────────────────────────────────────────────── */
+[data-bs-theme="dark"] .navbar {
+  background-color: #1e293b !important;
+  border-bottom: 1px solid #334155;
+}
+[data-bs-theme="dark"] .navbar-brand,
+[data-bs-theme="dark"] .nav-link { color: #f1f5f9 !important; }
+
+/* ── 5. Secciones bg-light / bg-white ──────────────────────── */
+[data-bs-theme="dark"] .bg-light,
+[data-bs-theme="dark"] .bg-white {
+  background-color: #1e293b !important;
+}
+
+/* Sección con style inline background:#fff */
+[data-bs-theme="dark"] section[style*="background"] {
+  background: #1e293b !important;
+}
+
+/* Hero */
+[data-bs-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+}
+
+/* final-cta usa la variable --turnerito-anti-flash-white que ya se sobreescribió,
+   pero forzamos por si el valor se resuelve antes */
+[data-bs-theme="dark"] .final-cta {
+  background: #0f172a !important;
+}
+
+/* ── 6. Cards genéricas ─────────────────────────────────────── */
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] [class*="-card"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+[data-bs-theme="dark"] .card-header,
+[data-bs-theme="dark"] .card-footer {
+  background-color: #243447 !important;
+  border-color: #334155 !important;
+}
+
+/* ── 7. Benefit / Use-case / Step / Profession / Pricing cards ─ */
+[data-bs-theme="dark"] .benefit-card,
+[data-bs-theme="dark"] .use-case-card,
+[data-bs-theme="dark"] .step-card,
+[data-bs-theme="dark"] .profession-card,
+[data-bs-theme="dark"] .pricing-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+[data-bs-theme="dark"] .benefit-title,
+[data-bs-theme="dark"] .use-case-title,
+[data-bs-theme="dark"] .step-title,
+[data-bs-theme="dark"] .pricing-title { color: #f1f5f9 !important; }
+
+[data-bs-theme="dark"] .benefit-description,
+[data-bs-theme="dark"] .use-case-desc,
+[data-bs-theme="dark"] .step-description,
+[data-bs-theme="dark"] .pricing-subtitle,
+[data-bs-theme="dark"] .price-period    { color: #94a3b8 !important; }
+
+[data-bs-theme="dark"] .use-case-list li { color: #94a3b8 !important; }
+
+[data-bs-theme="dark"] .pricing-features .feature       { color: #cbd5e1 !important; border-bottom-color: #334155 !important; }
+[data-bs-theme="dark"] .pricing-features .feature-disabled { color: #64748b !important; border-bottom-color: #334155 !important; }
+
+/* Featured pricing card */
+[data-bs-theme="dark"] .pricing-card.featured {
+  border-color: #6ee7b7 !important;
+}
+
+/* ── 8. Feature bubbles ─────────────────────────────────────── */
+[data-bs-theme="dark"] .feature-bubble {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4) !important;
+}
+[data-bs-theme="dark"] .text-mini { color: #f1f5f9 !important; }
+
+/* ── 9. Feature badges (management section) ─────────────────── */
+[data-bs-theme="dark"] .feature-badge {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+/* ── 10. Mini calendar / payment / whatsapp previews ────────── */
+[data-bs-theme="dark"] .calendar-day {
+  background: #334155 !important;
+}
+[data-bs-theme="dark"] .calendar-day.active { background: #244C25 !important; }
+[data-bs-theme="dark"] .calendar-day.booked { background: #334155 !important; }
+
+[data-bs-theme="dark"] .payment-card {
+  background: #243447 !important;
+  border-color: #475569 !important;
+}
+[data-bs-theme="dark"] .payment-brand { color: #94a3b8 !important; }
+
+[data-bs-theme="dark"] .whatsapp-message {
+  background: #1a4a2e !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+}
+[data-bs-theme="dark"] .message-text { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] .message-time { color: #94a3b8 !important; }
+
+/* ── 11. Link preview (step card) ──────────────────────────── */
+[data-bs-theme="dark"] .link-preview {
+  background: #243447 !important;
+  border-color: #6ee7b7 !important;
+}
+[data-bs-theme="dark"] .link-text { color: #6ee7b7 !important; }
+
+/* ── 12. Feature items (management list) ────────────────────── */
+[data-bs-theme="dark"] .feature-item {
+  background: rgba(255,255,255,0.05) !important;
+}
+[data-bs-theme="dark"] .feature-item:hover {
+  background: rgba(255,255,255,0.08) !important;
+}
+[data-bs-theme="dark"] .feature-content h5 { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] .feature-content p   { color: #94a3b8 !important; }
+
+/* ── 13. Screenshots section tab content ───────────────────── */
+[data-bs-theme="dark"] .tab-content.bg-light {
+  background-color: #243447 !important;
+  border-color: #334155 !important;
+}
+
+/* ── 14. Screenshots nav pills ─────────────────────────────── */
+[data-bs-theme="dark"] .screenshots-section .nav-pills .nav-link {
+  color: #94a3b8 !important;
+}
+[data-bs-theme="dark"] .screenshots-section .nav-pills .nav-link.active {
+  background-color: #244C25 !important;
+  color: white !important;
+}
+[data-bs-theme="dark"] .screenshots-section .nav-pills .nav-link:hover:not(.active) {
+  background-color: rgba(110,231,183,0.08) !important;
+  border-color: #6ee7b7 !important;
+  color: #6ee7b7 !important;
+}
+
+/* ── 15. Text utilities ─────────────────────────────────────── */
+[data-bs-theme="dark"] .text-dark   { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] .text-muted  { color: #94a3b8 !important; }
+[data-bs-theme="dark"] .text-primary { color: #6ee7b7 !important; }
+
+/* ── 16. Section title / subtitle ──────────────────────────── */
+[data-bs-theme="dark"] .section-title   { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] .section-subtitle { color: #94a3b8 !important; }
+
+/* ── 17. Hero copy ──────────────────────────────────────────── */
+[data-bs-theme="dark"] .hero-title    { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] .hero-subtitle { color: #94a3b8 !important; }
+
+/* btn-hero-secondary outline button */
+[data-bs-theme="dark"] .btn-hero-secondary {
+  border-color: #6ee7b7 !important;
+  color: #6ee7b7 !important;
+}
+[data-bs-theme="dark"] .btn-hero-secondary:hover {
+  background-color: #6ee7b7 !important;
+  color: #0f172a !important;
+}
+
+/* ── 18. CTA section ────────────────────────────────────────── */
+[data-bs-theme="dark"] .cta-title    { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] .cta-subtitle { color: #94a3b8 !important; }
+[data-bs-theme="dark"] .cta-trust-items { color: #94a3b8 !important; }
+[data-bs-theme="dark"] .cta-trust-items span { color: #94a3b8 !important; }
+
+/* ── 19. Borders / shadows ──────────────────────────────────── */
+[data-bs-theme="dark"] .border       { border-color: #334155 !important; }
+[data-bs-theme="dark"] .border-top   { border-top-color: #334155 !important; }
+[data-bs-theme="dark"] .border-bottom { border-bottom-color: #334155 !important; }
+
+[data-bs-theme="dark"] .shadow,
+[data-bs-theme="dark"] .shadow-sm,
+[data-bs-theme="dark"] .shadow-lg {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+}
+
+/* ── 20. Images — subtle opacity ────────────────────────────── */
+[data-bs-theme="dark"] .hero-image,
+[data-bs-theme="dark"] .management-image,
+[data-bs-theme="dark"] .tab-content img {
+  opacity: 0.92;
+}
+
+/* ── 21. Dark mode toggle button ────────────────────────────── */
+.dark-mode-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: inherit;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 1rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.dark-mode-toggle:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* Profession card h3 text */
+[data-bs-theme="dark"] .profession-card h3 { color: #f1f5f9 !important; }
+
+/* Use-case tag in dark */
+[data-bs-theme="dark"] .use-case-tag {
+  background: rgba(110,231,183,0.12) !important;
+  color: #6ee7b7 !important;
+}
