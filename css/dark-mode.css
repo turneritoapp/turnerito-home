@@ -269,9 +269,9 @@
 }
 
 /* ── 22. Footer ─────────────────────────────────────────────── */
-/* En dark mode el footer mantiene su verde oscuro para contrastar con el body slate */
+/* En dark mode el footer iguala el color del navbar */
 [data-bs-theme="dark"] footer {
-  background-color: #0e1f0f !important;
+  background-color: #1e293b !important;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 [data-bs-theme="dark"] footer h6      { color: #f1f5f9 !important; }
