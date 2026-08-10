@@ -269,14 +269,14 @@
 }
 
 /* ── 22. Footer ─────────────────────────────────────────────── */
-/* Los colores del footer son inline styles, se necesita !important para pisar */
+/* En dark mode el footer mantiene su verde oscuro para contrastar con el body slate */
 [data-bs-theme="dark"] footer {
-  background-color: #0f172a !important;
-  border-top: 1px solid #334155;
+  background-color: #0e1f0f !important;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
-[data-bs-theme="dark"] footer h6    { color: #f1f5f9 !important; }
-[data-bs-theme="dark"] footer p     { color: #94a3b8 !important; }
-[data-bs-theme="dark"] footer a     { color: #94a3b8 !important; }
+[data-bs-theme="dark"] footer h6      { color: #f1f5f9 !important; }
+[data-bs-theme="dark"] footer p       { color: #94a3b8 !important; }
+[data-bs-theme="dark"] footer a       { color: #aaa !important; }
 [data-bs-theme="dark"] footer a:hover { color: #6ee7b7 !important; }
-[data-bs-theme="dark"] footer span  { color: #475569 !important; }
-[data-bs-theme="dark"] footer hr    { border-color: #1e293b !important; opacity: 1; }
+[data-bs-theme="dark"] footer span    { color: #666 !important; }
+[data-bs-theme="dark"] footer hr      { border-color: rgba(255,255,255,0.08) !important; opacity: 1; }
